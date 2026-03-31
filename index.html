@@ -21,7 +21,6 @@
             <a href="#quality" class="hover:text-amber-500 transition text-neutral-400">Standards</a>
             <a href="#" onclick="openCatalog(event)" class="text-amber-500 hover:underline">Catalog</a>
         </div>
-        <!-- Updated to Clean White Button -->
         <a href="#contact" class="bg-white text-black px-5 py-2 text-sm rounded-sm hover:bg-neutral-200 transition font-bold">Get Quote</a>
     </nav>
 
@@ -124,29 +123,28 @@
         </div>
     </section>
 
-    <!-- 5. WORKFLOW SECTION (The Adil Standard) -->
+    <!-- 5. WORKFLOW SECTION -->
     <section class="py-24 px-6 bg-neutral-800/50 border-y border-neutral-800">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-xs uppercase tracking-[0.5em] text-amber-500 mb-4 font-bold">The Adil Standard</h2>
                 <p class="text-3xl font-light">From Raw Hide to Finished Roll</p>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="p-8 border border-neutral-700 bg-neutral-900 flex flex-col items-center text-center">
                     <div class="w-12 h-12 rounded-full border border-amber-500 flex items-center justify-center text-amber-500 mb-6 font-bold">1</div>
                     <h3 class="text-lg font-bold uppercase mb-3 text-white">Selection</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed">Only the finest local hides are selected, ensuring minimal defects and maximum yield for your production.</p>
+                    <p class="text-sm text-neutral-400 leading-relaxed">Only the finest local hides are selected, ensuring minimal defects and maximum yield.</p>
                 </div>
                 <div class="p-8 border border-neutral-700 bg-neutral-900 flex flex-col items-center text-center text-white">
                     <div class="w-12 h-12 rounded-full border border-amber-500 flex items-center justify-center text-amber-500 mb-6 font-bold">2</div>
                     <h3 class="text-lg font-bold uppercase mb-3">Precision Tanning</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed">Using modern drumming techniques to achieve deep color penetration and the exact temper you require.</p>
+                    <p class="text-sm text-neutral-400 leading-relaxed">Using modern drumming techniques to achieve deep color and exact temper.</p>
                 </div>
                 <div class="p-8 border border-neutral-700 bg-neutral-900 flex flex-col items-center text-center">
                     <div class="w-12 h-12 rounded-full border border-amber-500 flex items-center justify-center text-amber-500 mb-6 font-bold">3</div>
                     <h3 class="text-lg font-bold uppercase mb-3 text-white">Quality Grading</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed">Every roll is measured, inspected for consistency, and rolled securely for transport to your facility.</p>
+                    <p class="text-sm text-neutral-400 leading-relaxed">Every roll is measured, inspected, and rolled securely for transport.</p>
                 </div>
             </div>
         </div>
@@ -156,10 +154,10 @@
     <section id="contact" class="py-24 px-6">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-4xl font-light mb-4 uppercase tracking-widest">Inquiry Portal</h2>
-            <p class="text-neutral-500 mb-12">Connect with us for bulk pricing or to order a sample swatch book.</p>
+            <p class="text-neutral-500 mb-12">Connect with us for bulk pricing or a sample swatch book.</p>
             
-            <form id="contactForm" action="https://formsubmit.co/noorf0977@gmail.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left relative">
-                <!-- Security: Prevents spam bots -->
+            <!-- FIXED URL: Added /ajax/ to the link -->
+            <form id="contactForm" action="https://formsubmit.co/ajax/noorf0977@gmail.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left relative">
                 <input type="hidden" name="_captcha" value="false">
 
                 <div class="flex flex-col">
@@ -174,10 +172,8 @@
                     <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Requirement Details</label>
                     <textarea name="Message" required placeholder="Tell us about the quantity and type of leather rolls you need..." class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition h-24 resize-none text-white"></textarea>
                 </div>
-                <!-- Updated Button with ID for JS -->
                 <button type="submit" id="submitBtn" class="bg-white text-black font-bold py-4 hover:bg-neutral-200 transition uppercase tracking-widest text-xs md:col-span-2">Send Email Inquiry</button>
 
-                <!-- Custom Dark-Themed Success Message (Hidden by default) -->
                 <div id="successMsg" class="hidden absolute inset-0 bg-neutral-900/95 backdrop-blur-sm flex flex-col items-center justify-center text-center z-10 border border-neutral-700">
                     <svg class="w-12 h-12 text-[#25D366] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                     <h3 class="text-xl font-light text-white uppercase tracking-widest mb-2">Inquiry Sent</h3>
@@ -185,103 +181,74 @@
                 </div>
             </form>
 
-            <a href="https://wa.me/923016112530?text=Hi%20Adil%20Leather,%20I%20am%20interested%20in%20your%20bulk%20leather%20rolls." 
-               target="_blank" 
-               class="bg-[#25D366] text-white font-bold py-4 hover:opacity-80 transition uppercase tracking-widest text-xs flex items-center justify-center w-full">
+            <a href="https://wa.me/923016112530?text=Hi%20Adil%20Leather" target="_blank" class="bg-[#25D366] text-white font-bold py-4 hover:opacity-80 transition uppercase tracking-widest text-xs flex items-center justify-center w-full">
                 WhatsApp Message
             </a>
-
             <p class="text-xs text-neutral-600 uppercase tracking-[0.4em] mt-10 font-bold">Sialkot | Lahore | Karachi</p>
         </div>
     </section>
 
-    <!-- 7. FOOTER -->
     <footer class="p-10 text-center text-neutral-700 text-[10px] tracking-[0.3em] uppercase border-t border-neutral-800">
-        © 2026 Adil Leather Pakistan. Quality in every fiber.
+        © 2026 Adil Leather Pakistan.
     </footer>
 
-    <!-- 8. THE CATALOG POPUP MODAL -->
+    <!-- 8. CATALOG MODAL -->
     <div id="catalogModal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm">
         <div class="bg-neutral-900 border border-neutral-700 p-8 max-w-sm w-full text-center relative shadow-2xl">
-            <!-- Close Button -->
             <button onclick="closeCatalog()" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            
             <h3 class="text-2xl font-light mb-2 text-white uppercase tracking-widest">Catalog</h3>
-            <p class="text-neutral-400 text-sm mb-8">How would you like to view our catalog?</p>
-            
+            <p class="text-neutral-400 text-sm mb-8">Choose an option:</p>
             <div class="flex flex-col space-y-4">
-                <!-- Option 1: View in Browser -->
-                <a href="catalog.pdf" target="_blank" onclick="closeCatalog()" class="bg-white text-black font-bold py-4 uppercase tracking-widest text-xs hover:bg-neutral-200 transition">
-                    View in Browser
-                </a>
-                <!-- Option 2: Download -->
-                <a href="catalog.pdf" download onclick="closeCatalog()" class="border border-neutral-600 text-white font-bold py-4 uppercase tracking-widest text-xs hover:bg-neutral-800 transition">
-                    Download PDF
-                </a>
+                <a href="catalog.pdf" target="_blank" onclick="closeCatalog()" class="bg-white text-black font-bold py-4 uppercase tracking-widest text-xs hover:bg-neutral-200 transition">View in Browser</a>
+                <a href="catalog.pdf" download onclick="closeCatalog()" class="border border-neutral-600 text-white font-bold py-4 uppercase tracking-widest text-xs hover:bg-neutral-800 transition">Download PDF</a>
             </div>
         </div>
     </div>
 
     <!-- JavaScript -->
     <script>
-        // Open the Popup
         function openCatalog(event) {
             event.preventDefault(); 
             document.getElementById('catalogModal').classList.remove('hidden');
         }
 
-        // Close the Popup
         function closeCatalog() {
             document.getElementById('catalogModal').classList.add('hidden');
         }
 
-        // Handle Form Submission in the Background
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Stops FormSubmit redirect
+            e.preventDefault(); 
 
             const form = e.target;
             const btn = document.getElementById('submitBtn');
             const successMsg = document.getElementById('successMsg');
 
-            // Change button to show waiting state
             btn.innerText = 'Sending...';
             btn.disabled = true;
             btn.classList.add('opacity-50', 'cursor-not-allowed');
 
-            // Send the email silently
             fetch(form.action, {
                 method: 'POST',
                 body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    // Show success message
                     successMsg.classList.remove('hidden');
                     form.reset();
-                    
-                    // Reset button
                     btn.innerText = 'Send Email Inquiry';
                     btn.disabled = false;
                     btn.classList.remove('opacity-50', 'cursor-not-allowed');
-
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        successMsg.classList.add('hidden');
-                    }, 5000);
+                    setTimeout(() => { successMsg.classList.add('hidden'); }, 5000);
                 } else {
-                    alert('Oops! Something went wrong. Please try again.');
-                    btn.innerText = 'Send Email Inquiry';
-                    btn.disabled = false;
-                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    throw new Error('Response not ok');
                 }
             }).catch(error => {
-                alert('Error sending message. Please use the WhatsApp button instead.');
+                // If this runs, something is blocking the network request
+                alert('Connection error. Please try the WhatsApp button.');
                 btn.innerText = 'Send Email Inquiry';
                 btn.disabled = false;
                 btn.classList.remove('opacity-50', 'cursor-not-allowed');
