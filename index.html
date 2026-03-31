@@ -158,21 +158,31 @@
             <h2 class="text-4xl font-light mb-4 uppercase tracking-widest">Inquiry Portal</h2>
             <p class="text-neutral-500 mb-12">Connect with us for bulk pricing or to order a sample swatch book.</p>
             
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left">
+            <form id="contactForm" action="https://formsubmit.co/noorf0977@gmail.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left relative">
+                <!-- Security: Prevents spam bots -->
+                <input type="hidden" name="_captcha" value="false">
+
                 <div class="flex flex-col">
                     <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Full Name</label>
-                    <input type="text" placeholder="Adil Khan" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition text-white">
+                    <input type="text" name="Name" required placeholder="Adil Khan" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition text-white">
                 </div>
                 <div class="flex flex-col">
                     <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Business Email</label>
-                    <input type="email" placeholder="contact@business.com" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition text-white">
+                    <input type="email" name="Email" required placeholder="contact@business.com" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition text-white">
                 </div>
                 <div class="flex flex-col md:col-span-2">
                     <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Requirement Details</label>
-                    <textarea placeholder="Tell us about the quantity and type of leather rolls you need..." class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition h-24 resize-none text-white"></textarea>
+                    <textarea name="Message" required placeholder="Tell us about the quantity and type of leather rolls you need..." class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition h-24 resize-none text-white"></textarea>
                 </div>
-                <!-- Updated to Clean White Button -->
-                <button type="submit" class="bg-white text-black font-bold py-4 hover:bg-neutral-200 transition uppercase tracking-widest text-xs md:col-span-2">Send Email Inquiry</button>
+                <!-- Updated Button with ID for JS -->
+                <button type="submit" id="submitBtn" class="bg-white text-black font-bold py-4 hover:bg-neutral-200 transition uppercase tracking-widest text-xs md:col-span-2">Send Email Inquiry</button>
+
+                <!-- Custom Dark-Themed Success Message (Hidden by default) -->
+                <div id="successMsg" class="hidden absolute inset-0 bg-neutral-900/95 backdrop-blur-sm flex flex-col items-center justify-center text-center z-10 border border-neutral-700">
+                    <svg class="w-12 h-12 text-[#25D366] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <h3 class="text-xl font-light text-white uppercase tracking-widest mb-2">Inquiry Sent</h3>
+                    <p class="text-neutral-400 text-xs uppercase tracking-widest">We will contact you shortly.</p>
+                </div>
             </form>
 
             <a href="https://wa.me/923016112530?text=Hi%20Adil%20Leather,%20I%20am%20interested%20in%20your%20bulk%20leather%20rolls." 
@@ -204,11 +214,11 @@
             <p class="text-neutral-400 text-sm mb-8">How would you like to view our catalog?</p>
             
             <div class="flex flex-col space-y-4">
-                <!-- Option 1: View in Browser (Clean White Button) -->
+                <!-- Option 1: View in Browser -->
                 <a href="catalog.pdf" target="_blank" onclick="closeCatalog()" class="bg-white text-black font-bold py-4 uppercase tracking-widest text-xs hover:bg-neutral-200 transition">
                     View in Browser
                 </a>
-                <!-- Option 2: Download (Clean Dark Outline Button) -->
+                <!-- Option 2: Download -->
                 <a href="catalog.pdf" download onclick="closeCatalog()" class="border border-neutral-600 text-white font-bold py-4 uppercase tracking-widest text-xs hover:bg-neutral-800 transition">
                     Download PDF
                 </a>
@@ -229,11 +239,53 @@
             document.getElementById('catalogModal').classList.add('hidden');
         }
 
-        // Form Submission Alert
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your inquiry! Adil Leather will contact you shortly.');
-            this.reset();
+        // Handle Form Submission in the Background
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stops FormSubmit redirect
+
+            const form = e.target;
+            const btn = document.getElementById('submitBtn');
+            const successMsg = document.getElementById('successMsg');
+
+            // Change button to show waiting state
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            // Send the email silently
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Show success message
+                    successMsg.classList.remove('hidden');
+                    form.reset();
+                    
+                    // Reset button
+                    btn.innerText = 'Send Email Inquiry';
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMsg.classList.add('hidden');
+                    }, 5000);
+                } else {
+                    alert('Oops! Something went wrong. Please try again.');
+                    btn.innerText = 'Send Email Inquiry';
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }).catch(error => {
+                alert('Error sending message. Please use the WhatsApp button instead.');
+                btn.innerText = 'Send Email Inquiry';
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            });
         });
     </script>
 </body>
