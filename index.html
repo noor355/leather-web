@@ -11,7 +11,7 @@
         .leather-card:hover .overlay { opacity: 0; }
     </style>
 </head>
-<body class="bg-neutral-900 text-neutral-100 font-sans">
+<body class="bg-neutral-900 text-neutral-100 font-sans relative">
 
     <!-- 1. NAVIGATION -->
     <nav class="flex justify-between items-center p-6 border-b border-neutral-800 sticky top-0 bg-neutral-900/90 backdrop-blur-md z-50">
@@ -19,9 +19,10 @@
         <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
             <a href="#collection" class="hover:text-amber-500 transition text-neutral-400">Collection</a>
             <a href="#quality" class="hover:text-amber-500 transition text-neutral-400">Standards</a>
-            <a href="catalog.pdf" download class="text-amber-500 hover:underline">Catalog</a>
+            <a href="#" onclick="openCatalog(event)" class="text-amber-500 hover:underline">Catalog</a>
         </div>
-        <a href="#contact" class="bg-amber-600 px-5 py-2 text-sm rounded-sm hover:bg-amber-700 transition font-bold">Get Quote</a>
+        <!-- Updated to Clean White Button -->
+        <a href="#contact" class="bg-white text-black px-5 py-2 text-sm rounded-sm hover:bg-neutral-200 transition font-bold">Get Quote</a>
     </nav>
 
     <!-- 2. HERO SECTION -->
@@ -32,8 +33,8 @@
             Leading suppliers of high-grade leather rolls. We provide the raw foundation for excellence in footwear, apparel, and upholstery.
         </p>
         <div class="mt-12 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-            <a href="#collection" class="bg-white text-black px-10 py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-500 transition">View Collection</a>
-            <a href="catalog.pdf" download class="border border-neutral-600 px-10 py-4 font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition flex items-center justify-center">
+            <a href="#collection" class="bg-white text-black px-10 py-4 font-bold uppercase tracking-widest text-xs hover:bg-neutral-200 transition">View Collection</a>
+            <a href="#" onclick="openCatalog(event)" class="border border-neutral-600 px-10 py-4 font-bold uppercase tracking-widest text-xs hover:bg-neutral-800 hover:text-white transition flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
@@ -50,10 +51,9 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <!-- Product 1 -->
             <div class="group">
                 <div class="aspect-[4/5] bg-neutral-800 border border-neutral-700 flex items-center justify-center relative">
-                    <span class="text-neutral-600 uppercase tracking-widest text-xs">Cow Full Grain</span>
+                    <span class="text-neutral-600 uppercase tracking-widest text-xs font-bold">Cow Full Grain</span>
                 </div>
                 <div class="mt-6">
                     <h3 class="text-xl font-medium tracking-tight uppercase">Classic Cow Hide</h3>
@@ -65,7 +65,6 @@
                 </div>
             </div>
 
-            <!-- Product 2 -->
             <div class="group">
                 <div class="aspect-[4/5] bg-neutral-800 border border-neutral-700 flex items-center justify-center">
                     <span class="text-neutral-600 uppercase tracking-widest text-xs text-center font-bold">Buffalo Nappa<br><small class="opacity-50 font-normal">Premium Finish</small></span>
@@ -80,7 +79,6 @@
                 </div>
             </div>
 
-            <!-- Product 3 -->
             <div class="group">
                 <div class="aspect-[4/5] bg-neutral-800 border border-neutral-700 flex items-center justify-center">
                     <span class="text-neutral-600 uppercase tracking-widest text-xs text-center font-bold">Split Suede<br><small class="opacity-50 font-normal">Heavy Duty</small></span>
@@ -103,66 +101,140 @@
             <h2 class="text-3xl font-light mb-16 border-l-4 border-amber-600 pl-4 uppercase tracking-wider">Supply Standards</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
                 <div>
-                    <div class="text-amber-500 mb-6 italic font-serif text-3xl">01</div>
-                    <h4 class="text-lg font-medium mb-2 uppercase tracking-tighter">Consistency</h4>
+                    <div class="text-amber-500 mb-6 italic font-serif text-3xl font-bold">01</div>
+                    <h4 class="text-lg font-bold uppercase tracking-tighter">Consistency</h4>
                     <p class="text-sm text-neutral-500 leading-relaxed">Strict color-matching protocols to ensure every roll matches the master sample.</p>
                 </div>
                 <div>
-                    <div class="text-amber-500 mb-6 italic font-serif text-3xl">02</div>
-                    <h4 class="text-lg font-medium mb-2 uppercase tracking-tighter">Logistics</h4>
+                    <div class="text-amber-500 mb-6 italic font-serif text-3xl font-bold">02</div>
+                    <h4 class="text-lg font-bold uppercase tracking-tighter">Logistics</h4>
                     <p class="text-sm text-neutral-500 leading-relaxed">Fast fulfillment across Pakistan's industrial hubs: Sialkot, Lahore, and Karachi.</p>
                 </div>
                 <div>
-                    <div class="text-amber-500 mb-6 italic font-serif text-3xl">03</div>
-                    <h4 class="text-lg font-medium mb-2 uppercase tracking-tighter">Bespoke</h4>
+                    <div class="text-amber-500 mb-6 italic font-serif text-3xl font-bold">03</div>
+                    <h4 class="text-lg font-bold uppercase tracking-tighter">Bespoke</h4>
                     <p class="text-sm text-neutral-500 leading-relaxed">Custom thickness and finish adjustments tailored to your specific production needs.</p>
                 </div>
                 <div>
-                    <div class="text-amber-500 mb-6 italic font-serif text-3xl">04</div>
-                    <h4 class="text-lg font-medium mb-2 uppercase tracking-tighter">Transparency</h4>
+                    <div class="text-amber-500 mb-6 italic font-serif text-3xl font-bold">04</div>
+                    <h4 class="text-lg font-bold uppercase tracking-tighter">Transparency</h4>
                     <p class="text-sm text-neutral-500 leading-relaxed">Detailed technical data sheets provided for every batch of leather supplied.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. CONTACT & INQUIRY -->
+    <!-- 5. WORKFLOW SECTION (The Adil Standard) -->
+    <section class="py-24 px-6 bg-neutral-800/50 border-y border-neutral-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-xs uppercase tracking-[0.5em] text-amber-500 mb-4 font-bold">The Adil Standard</h2>
+                <p class="text-3xl font-light">From Raw Hide to Finished Roll</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 border border-neutral-700 bg-neutral-900 flex flex-col items-center text-center">
+                    <div class="w-12 h-12 rounded-full border border-amber-500 flex items-center justify-center text-amber-500 mb-6 font-bold">1</div>
+                    <h3 class="text-lg font-bold uppercase mb-3 text-white">Selection</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">Only the finest local hides are selected, ensuring minimal defects and maximum yield for your production.</p>
+                </div>
+                <div class="p-8 border border-neutral-700 bg-neutral-900 flex flex-col items-center text-center text-white">
+                    <div class="w-12 h-12 rounded-full border border-amber-500 flex items-center justify-center text-amber-500 mb-6 font-bold">2</div>
+                    <h3 class="text-lg font-bold uppercase mb-3">Precision Tanning</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">Using modern drumming techniques to achieve deep color penetration and the exact temper you require.</p>
+                </div>
+                <div class="p-8 border border-neutral-700 bg-neutral-900 flex flex-col items-center text-center">
+                    <div class="w-12 h-12 rounded-full border border-amber-500 flex items-center justify-center text-amber-500 mb-6 font-bold">3</div>
+                    <h3 class="text-lg font-bold uppercase mb-3 text-white">Quality Grading</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">Every roll is measured, inspected for consistency, and rolled securely for transport to your facility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CONTACT & INQUIRY -->
     <section id="contact" class="py-24 px-6">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-4xl font-light mb-4 uppercase tracking-widest">Inquiry Portal</h2>
             <p class="text-neutral-500 mb-12">Connect with us for bulk pricing or to order a sample swatch book.</p>
             
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 text-left">
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left">
                 <div class="flex flex-col">
-                    <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2">Full Name</label>
-                    <input type="text" placeholder="Adil Khan" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-amber-500 transition">
+                    <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Full Name</label>
+                    <input type="text" placeholder="Adil Khan" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition text-white">
                 </div>
                 <div class="flex flex-col">
-                    <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2">Business Email</label>
-                    <input type="email" placeholder="contact@business.com" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-amber-500 transition">
+                    <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Business Email</label>
+                    <input type="email" placeholder="contact@business.com" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition text-white">
                 </div>
                 <div class="flex flex-col md:col-span-2">
-                    <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2">Requirement Details</label>
-                    <textarea placeholder="Tell us about the quantity and type of leather rolls you need..." class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-amber-500 transition h-24 resize-none"></textarea>
+                    <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Requirement Details</label>
+                    <textarea placeholder="Tell us about the quantity and type of leather rolls you need..." class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition h-24 resize-none text-white"></textarea>
                 </div>
-                <button type="submit" class="bg-white text-black font-bold py-4 hover:bg-amber-600 hover:text-white transition uppercase tracking-widest text-xs">Send Email Inquiry</button>
-                
-                <!-- WhatsApp Button (Replace the number below with yours) -->
-                <a href="https://wa.me/923016112530?text=Hi%20Adil%20Leather,%20I%20am%20interested%20in%20your%20bulk%20leather%20rolls." 
-                   target="_blank" 
-                   class="bg-[#25D366] text-white font-bold py-4 hover:opacity-80 transition uppercase tracking-widest text-xs flex items-center justify-center">
-                    WhatsApp Message
-                </a>
+                <!-- Updated to Clean White Button -->
+                <button type="submit" class="bg-white text-black font-bold py-4 hover:bg-neutral-200 transition uppercase tracking-widest text-xs md:col-span-2">Send Email Inquiry</button>
             </form>
-            <p class="text-xs text-neutral-600 uppercase tracking-[0.4em]">Sialkot | Lahore | Karachi</p>
+
+            <a href="https://wa.me/923016112530?text=Hi%20Adil%20Leather,%20I%20am%20interested%20in%20your%20bulk%20leather%20rolls." 
+               target="_blank" 
+               class="bg-[#25D366] text-white font-bold py-4 hover:opacity-80 transition uppercase tracking-widest text-xs flex items-center justify-center w-full">
+                WhatsApp Message
+            </a>
+
+            <p class="text-xs text-neutral-600 uppercase tracking-[0.4em] mt-10 font-bold">Sialkot | Lahore | Karachi</p>
         </div>
     </section>
 
-    <!-- 6. FOOTER -->
+    <!-- 7. FOOTER -->
     <footer class="p-10 text-center text-neutral-700 text-[10px] tracking-[0.3em] uppercase border-t border-neutral-800">
         © 2026 Adil Leather Pakistan. Quality in every fiber.
     </footer>
 
-    <script src="script.js"></script>
+    <!-- 8. THE CATALOG POPUP MODAL -->
+    <div id="catalogModal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm">
+        <div class="bg-neutral-900 border border-neutral-700 p-8 max-w-sm w-full text-center relative shadow-2xl">
+            <!-- Close Button -->
+            <button onclick="closeCatalog()" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <h3 class="text-2xl font-light mb-2 text-white uppercase tracking-widest">Catalog</h3>
+            <p class="text-neutral-400 text-sm mb-8">How would you like to view our catalog?</p>
+            
+            <div class="flex flex-col space-y-4">
+                <!-- Option 1: View in Browser (Clean White Button) -->
+                <a href="catalog.pdf" target="_blank" onclick="closeCatalog()" class="bg-white text-black font-bold py-4 uppercase tracking-widest text-xs hover:bg-neutral-200 transition">
+                    View in Browser
+                </a>
+                <!-- Option 2: Download (Clean Dark Outline Button) -->
+                <a href="catalog.pdf" download onclick="closeCatalog()" class="border border-neutral-600 text-white font-bold py-4 uppercase tracking-widest text-xs hover:bg-neutral-800 transition">
+                    Download PDF
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Open the Popup
+        function openCatalog(event) {
+            event.preventDefault(); 
+            document.getElementById('catalogModal').classList.remove('hidden');
+        }
+
+        // Close the Popup
+        function closeCatalog() {
+            document.getElementById('catalogModal').classList.add('hidden');
+        }
+
+        // Form Submission Alert
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! Adil Leather will contact you shortly.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
