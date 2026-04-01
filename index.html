@@ -13,14 +13,30 @@
 <body class="bg-neutral-900 text-neutral-100 font-sans relative">
 
     <nav class="flex justify-between items-center p-6 border-b border-neutral-800 sticky top-0 bg-neutral-900/90 backdrop-blur-md z-50">
-        <div class="text-2xl font-bold tracking-tighter text-amber-500 uppercase">Adil Leather</div>
-        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
+        <div class="text-2xl font-bold tracking-tighter text-amber-500 uppercase z-50">Adil Leather</div>
+        
+        <div class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest font-medium">
             <a href="#collection" class="hover:text-amber-500 transition text-neutral-400">Collection</a>
             <a href="#quality" class="hover:text-amber-500 transition text-neutral-400">Standards</a>
             <a href="#" onclick="openCatalog(event)" class="text-amber-500 hover:underline">Catalog</a>
+            <a href="#contact" class="bg-white text-black px-5 py-2 text-sm rounded-sm hover:bg-neutral-200 transition font-bold ml-4">Get Quote</a>
         </div>
-        <a href="#contact" class="bg-white text-black px-5 py-2 text-sm rounded-sm hover:bg-neutral-200 transition font-bold">Get Quote</a>
+
+        <button id="mobileMenuBtn" class="md:hidden text-white hover:text-amber-500 transition focus:outline-none z-50">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
     </nav>
+
+    <div id="mobileMenu" class="fixed inset-0 bg-neutral-900/95 backdrop-blur-md z-[60] hidden flex flex-col items-center justify-center space-y-8 text-center px-4 transition-all">
+        <button id="closeMenuBtn" class="absolute top-6 right-6 text-neutral-500 hover:text-white transition focus:outline-none">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <a href="#collection" class="mobile-link text-2xl font-light uppercase tracking-widest text-neutral-300 hover:text-amber-500 transition">Collection</a>
+        <a href="#quality" class="mobile-link text-2xl font-light uppercase tracking-widest text-neutral-300 hover:text-amber-500 transition">Standards</a>
+        <a href="#" onclick="openCatalog(event); document.getElementById('mobileMenu').classList.add('hidden');" class="text-2xl font-light uppercase tracking-widest text-amber-500 hover:underline transition">Catalog</a>
+        <a href="#contact" class="mobile-link bg-white text-black px-10 py-4 text-sm font-bold uppercase tracking-widest mt-8">Get Quote</a>
+    </div>
 
     <header class="h-[85vh] flex flex-col justify-center items-center text-center px-4 border-b border-neutral-800">
         <span class="text-amber-500 tracking-[0.3em] uppercase text-xs mb-4 font-bold">Premium Pakistani Tannery</span>
@@ -212,6 +228,7 @@
     </div>
 
     <script>
+        // Catalog Logic
         function openCatalog(event) {
             event.preventDefault(); 
             document.getElementById('catalogModal').classList.remove('hidden');
@@ -221,6 +238,31 @@
             document.getElementById('catalogModal').classList.add('hidden');
         }
 
+        // --- NEW: Mobile Menu Logic ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // Open menu
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        // Close menu with X button
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Close menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        // ------------------------------
+
+        // Email Form Logic
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMsg = document.getElementById('successMsg');
@@ -229,10 +271,7 @@
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault(); 
 
-            // Hide previous error
             errorMsg.classList.add('hidden');
-
-            // Button Loading State
             submitBtn.innerText = 'Sending...';
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
@@ -251,7 +290,6 @@
                 if (response.status == 200) {
                     successMsg.classList.remove('hidden');
                     contactForm.reset();
-                    // Hide success message after 5 seconds
                     setTimeout(() => { successMsg.classList.add('hidden'); }, 5000);
                 } else {
                     console.log(response);
