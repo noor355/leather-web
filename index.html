@@ -8,7 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html { scroll-behavior: smooth; }
-        .leather-card:hover .overlay { opacity: 0; }
+        /* Prevent layout shift when the success message appears */
+        .form-container { min-height: 400px; }
     </style>
 </head>
 <body class="bg-neutral-900 text-neutral-100 font-sans relative">
@@ -139,12 +140,12 @@
                 <div class="p-8 border border-neutral-700 bg-neutral-900 flex flex-col items-center text-center text-white">
                     <div class="w-12 h-12 rounded-full border border-amber-500 flex items-center justify-center text-amber-500 mb-6 font-bold">2</div>
                     <h3 class="text-lg font-bold uppercase mb-3">Precision Tanning</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed">Using modern drumming techniques to achieve deep color and exact temper.</p>
+                    <p class="text-sm text-neutral-400 leading-relaxed">Using modern drumming techniques to achieve deep color penetration and exact temper.</p>
                 </div>
-                <div class="p-8 border border-neutral-700 bg-neutral-900 flex flex-col items-center text-center">
+                <div class="p-8 border border-neutral-700 bg-neutral-900 flex flex-col items-center text-center text-white">
                     <div class="w-12 h-12 rounded-full border border-amber-500 flex items-center justify-center text-amber-500 mb-6 font-bold">3</div>
-                    <h3 class="text-lg font-bold uppercase mb-3 text-white">Quality Grading</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed">Every roll is measured, inspected, and rolled securely for transport.</p>
+                    <h3 class="text-lg font-bold uppercase mb-3">Quality Grading</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">Every roll is measured, inspected for consistency, and rolled securely for transport.</p>
                 </div>
             </div>
         </div>
@@ -152,13 +153,14 @@
 
     <!-- 6. CONTACT & INQUIRY -->
     <section id="contact" class="py-24 px-6">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-4xl font-light mb-4 uppercase tracking-widest">Inquiry Portal</h2>
-            <p class="text-neutral-500 mb-12">Connect with us for bulk pricing or a sample swatch book.</p>
+        <div class="max-w-3xl mx-auto text-center form-container">
+            <h2 class="text-4xl font-light mb-4 uppercase tracking-widest text-white">Inquiry Portal</h2>
+            <p class="text-neutral-500 mb-12">Connect with us for bulk pricing or to order a sample swatch book.</p>
             
-            <!-- FIXED URL: Added /ajax/ to the link -->
+            <!-- FORM SETUP -->
             <form id="contactForm" action="https://formsubmit.co/ajax/noorf0977@gmail.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left relative">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Bulk Leather Inquiry!">
 
                 <div class="flex flex-col">
                     <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Full Name</label>
@@ -172,8 +174,16 @@
                     <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Requirement Details</label>
                     <textarea name="Message" required placeholder="Tell us about the quantity and type of leather rolls you need..." class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition h-24 resize-none text-white"></textarea>
                 </div>
-                <button type="submit" id="submitBtn" class="bg-white text-black font-bold py-4 hover:bg-neutral-200 transition uppercase tracking-widest text-xs md:col-span-2">Send Email Inquiry</button>
+                <button type="submit" id="submitBtn" class="bg-white text-black font-bold py-4 hover:bg-neutral-200 transition uppercase tracking-widest text-xs md:col-span-2">
+                    Send Email Inquiry
+                </button>
 
+                <!-- Status Messages -->
+                <div id="errorMsg" class="hidden md:col-span-2 text-red-500 text-xs uppercase tracking-widest mt-2 text-center">
+                    Connection Error. Please check your internet or use WhatsApp.
+                </div>
+
+                <!-- Custom Dark Success Message overlay -->
                 <div id="successMsg" class="hidden absolute inset-0 bg-neutral-900/95 backdrop-blur-sm flex flex-col items-center justify-center text-center z-10 border border-neutral-700">
                     <svg class="w-12 h-12 text-[#25D366] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                     <h3 class="text-xl font-light text-white uppercase tracking-widest mb-2">Inquiry Sent</h3>
@@ -188,6 +198,7 @@
         </div>
     </section>
 
+    <!-- 7. FOOTER -->
     <footer class="p-10 text-center text-neutral-700 text-[10px] tracking-[0.3em] uppercase border-t border-neutral-800">
         © 2026 Adil Leather Pakistan.
     </footer>
@@ -209,7 +220,7 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript - V2.0 -->
     <script>
         function openCatalog(event) {
             event.preventDefault(); 
@@ -220,38 +231,46 @@
             document.getElementById('catalogModal').classList.add('hidden');
         }
 
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMsg = document.getElementById('successMsg');
+        const errorMsg = document.getElementById('errorMsg');
+
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault(); 
 
-            const form = e.target;
-            const btn = document.getElementById('submitBtn');
-            const successMsg = document.getElementById('successMsg');
+            // Hide previous error
+            errorMsg.classList.add('hidden');
 
-            btn.innerText = 'Sending...';
-            btn.disabled = true;
-            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            // Button Loading State
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
 
-            fetch(form.action, {
+            const formData = new FormData(contactForm);
+
+            fetch(contactForm.action, {
                 method: 'POST',
-                body: new FormData(form),
+                body: formData,
                 headers: { 'Accept': 'application/json' }
-            }).then(response => {
+            })
+            .then(response => {
                 if (response.ok) {
                     successMsg.classList.remove('hidden');
-                    form.reset();
-                    btn.innerText = 'Send Email Inquiry';
-                    btn.disabled = false;
-                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                    setTimeout(() => { successMsg.classList.add('hidden'); }, 5000);
+                    contactForm.reset();
                 } else {
-                    throw new Error('Response not ok');
+                    errorMsg.innerText = "Error: Please check your email to activate form.";
+                    errorMsg.classList.remove('hidden');
                 }
-            }).catch(error => {
-                // If this runs, something is blocking the network request
-                alert('Connection error. Please try the WhatsApp button.');
-                btn.innerText = 'Send Email Inquiry';
-                btn.disabled = false;
-                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                errorMsg.classList.remove('hidden');
+            })
+            .finally(() => {
+                submitBtn.innerText = 'Send Email Inquiry';
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
             });
         });
     </script>
