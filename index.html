@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adil Leather | Premium Bulk Leather Supply</title>
-    <!-- Modern Styling Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html { scroll-behavior: smooth; }
-        /* Prevent layout shift when the success message appears */
         .form-container { min-height: 400px; }
     </style>
 </head>
 <body class="bg-neutral-900 text-neutral-100 font-sans relative">
 
-    <!-- 1. NAVIGATION -->
     <nav class="flex justify-between items-center p-6 border-b border-neutral-800 sticky top-0 bg-neutral-900/90 backdrop-blur-md z-50">
         <div class="text-2xl font-bold tracking-tighter text-amber-500 uppercase">Adil Leather</div>
         <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
@@ -25,7 +22,6 @@
         <a href="#contact" class="bg-white text-black px-5 py-2 text-sm rounded-sm hover:bg-neutral-200 transition font-bold">Get Quote</a>
     </nav>
 
-    <!-- 2. HERO SECTION -->
     <header class="h-[85vh] flex flex-col justify-center items-center text-center px-4 border-b border-neutral-800">
         <span class="text-amber-500 tracking-[0.3em] uppercase text-xs mb-4 font-bold">Premium Pakistani Tannery</span>
         <h1 class="text-5xl md:text-8xl font-light mb-6 tracking-tight text-white">Adil <span class="italic text-amber-600 font-serif text-6xl md:text-9xl">Leather.</span></h1>
@@ -43,7 +39,6 @@
         </div>
     </header>
 
-    <!-- 3. PRODUCT COLLECTION -->
     <section id="collection" class="py-24 px-6 max-w-7xl mx-auto">
         <div class="mb-16">
             <h2 class="text-4xl font-light mb-2 uppercase tracking-tighter text-white">Material Library</h2>
@@ -95,7 +90,6 @@
         </div>
     </section>
 
-    <!-- 4. QUALITY STANDARDS -->
     <section id="quality" class="py-24 px-6 border-t border-neutral-800 bg-black/20">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl font-light mb-16 border-l-4 border-amber-600 pl-4 uppercase tracking-wider">Supply Standards</h2>
@@ -124,7 +118,6 @@
         </div>
     </section>
 
-    <!-- 5. WORKFLOW SECTION -->
     <section class="py-24 px-6 bg-neutral-800/50 border-y border-neutral-800">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
@@ -151,39 +144,39 @@
         </div>
     </section>
 
-    <!-- 6. CONTACT & INQUIRY -->
     <section id="contact" class="py-24 px-6">
         <div class="max-w-3xl mx-auto text-center form-container">
             <h2 class="text-4xl font-light mb-4 uppercase tracking-widest text-white">Inquiry Portal</h2>
             <p class="text-neutral-500 mb-12">Connect with us for bulk pricing or to order a sample swatch book.</p>
             
-            <!-- FORM SETUP -->
-            <form id="contactForm" action="https://formsubmit.co/ajax/noorf0977@gmail.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left relative">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="New Bulk Leather Inquiry!">
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left relative">
+                
+                <input type="hidden" name="access_key" value="78959d79-a2d4-4494-8982-8f863cfb1498">
+                
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <input type="hidden" name="subject" value="New Bulk Leather Inquiry!">
 
                 <div class="flex flex-col">
                     <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Full Name</label>
-                    <input type="text" name="Name" required placeholder="Adil Khan" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition text-white">
+                    <input type="text" name="name" required placeholder="Adil Khan" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition text-white">
                 </div>
                 <div class="flex flex-col">
                     <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Business Email</label>
-                    <input type="email" name="Email" required placeholder="contact@business.com" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition text-white">
+                    <input type="email" name="email" required placeholder="contact@business.com" class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition text-white">
                 </div>
                 <div class="flex flex-col md:col-span-2">
                     <label class="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Requirement Details</label>
-                    <textarea name="Message" required placeholder="Tell us about the quantity and type of leather rolls you need..." class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition h-24 resize-none text-white"></textarea>
+                    <textarea name="message" required placeholder="Tell us about the quantity and type of leather rolls you need..." class="bg-transparent border-b border-neutral-700 py-3 outline-none focus:border-neutral-300 transition h-24 resize-none text-white"></textarea>
                 </div>
+                
                 <button type="submit" id="submitBtn" class="bg-white text-black font-bold py-4 hover:bg-neutral-200 transition uppercase tracking-widest text-xs md:col-span-2">
                     Send Email Inquiry
                 </button>
 
-                <!-- Status Messages -->
                 <div id="errorMsg" class="hidden md:col-span-2 text-red-500 text-xs uppercase tracking-widest mt-2 text-center">
-                    Connection Error. Please check your internet or use WhatsApp.
+                    Connection Error. Please try again or use WhatsApp.
                 </div>
 
-                <!-- Custom Dark Success Message overlay -->
                 <div id="successMsg" class="hidden absolute inset-0 bg-neutral-900/95 backdrop-blur-sm flex flex-col items-center justify-center text-center z-10 border border-neutral-700">
                     <svg class="w-12 h-12 text-[#25D366] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                     <h3 class="text-xl font-light text-white uppercase tracking-widest mb-2">Inquiry Sent</h3>
@@ -198,12 +191,10 @@
         </div>
     </section>
 
-    <!-- 7. FOOTER -->
     <footer class="p-10 text-center text-neutral-700 text-[10px] tracking-[0.3em] uppercase border-t border-neutral-800">
         © 2026 Adil Leather Pakistan.
     </footer>
 
-    <!-- 8. CATALOG MODAL -->
     <div id="catalogModal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm">
         <div class="bg-neutral-900 border border-neutral-700 p-8 max-w-sm w-full text-center relative shadow-2xl">
             <button onclick="closeCatalog()" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition">
@@ -220,7 +211,6 @@
         </div>
     </div>
 
-    <!-- JavaScript - V2.0 -->
     <script>
         function openCatalog(event) {
             event.preventDefault(); 
@@ -249,25 +239,32 @@
 
             const formData = new FormData(contactForm);
 
-            fetch(contactForm.action, {
+            fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
             })
-            .then(response => {
-                if (response.ok) {
+            .then(async response => {
+                let json = await response.json();
+                if (response.status == 200) {
                     successMsg.classList.remove('hidden');
                     contactForm.reset();
+                    // Hide success message after 5 seconds
+                    setTimeout(() => { successMsg.classList.add('hidden'); }, 5000);
                 } else {
-                    errorMsg.innerText = "Error: Please check your email to activate form.";
+                    console.log(response);
+                    errorMsg.innerText = json.message || "Error submitting form.";
                     errorMsg.classList.remove('hidden');
                 }
             })
             .catch(error => {
-                console.error('Fetch error:', error);
+                console.log(error);
+                errorMsg.innerText = "Connection error. Please try again.";
                 errorMsg.classList.remove('hidden');
             })
-            .finally(() => {
+            .then(function() {
                 submitBtn.innerText = 'Send Email Inquiry';
                 submitBtn.disabled = false;
                 submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
